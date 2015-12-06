@@ -119,12 +119,17 @@
         padding: 0 30px;
         line-height: 45px;
       }
-      .msgsent {
+      .msgsent, .userconnect {
         padding: 10px;
-        margin: 3em;
         /* font-family: "Lato", sans-serif; */
         font-family: "Fira", sans-serif;
         font-size: 16px;
+      }
+      .msgsent {
+        margin: 3em;
+      }
+      .userconnect {
+        margin: 1em 3em;
       }
       .theirmsg {
         background: #E8E8E8;
@@ -317,7 +322,7 @@
         comm.on('connected', function(peer) {
           $(".theircam").prepend(peer.getVideo());
           $("#" + peer.ID).addClass("deleteCam " + peer.ID);
-          $('#messages').prepend($('<li>').addClass('msgsent theirmsg tl block').append('<span class="theirdate date block">a user joined the room<a class="delete-msg red fr">X</a></span> </li>'));
+          $('#messages').prepend($('<li>').addClass('userconnect theirmsg tl block').append('<span class="theirdate date block">a user joined the room<a class="delete-msg red fr">X</a></span> </li>'));
 
           $(".deleteCam").on("click", function(e) {
             var x;
@@ -334,7 +339,7 @@
 
         comm.on('disconnect', function(peer) {
           $("#" + peer.ID + ", ." + peer.ID).remove();
-          $('#messages').prepend($('<li>').addClass('msgsent theirmsg tl block').append('<span class="theirdate date block">a user left the room<a class="delete-msg red fr">X</a></span> </li>'));
+          $('#messages').prepend($('<li>').addClass('userconnect theirmsg tl block').append('<span class="theirdate date block">a user left the room<a class="delete-msg red fr">X</a></span> </li>'));
         });
       };
       connectIcecomm();
