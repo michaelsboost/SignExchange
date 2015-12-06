@@ -320,7 +320,6 @@
           $('#messages').prepend($('<li>').addClass('msgsent theirmsg tl block').append('<span class="theirdate date block">a user joined the room<a class="delete-msg red fr">X</a></span> </li>'));
 
           $(".deleteCam").on("click", function(e) {
-            // $("#" + e.target.id).remove();
             var x;
             if (confirm("Are you sure you wish to delete this webcam? There's no going back!") == true) {
               $("#" + e.target.id).remove();
@@ -329,10 +328,6 @@
             return false;
           });
         });
-        // comm.on('global_connect', function(peer) {
-        //   // <li class="msgsent theirmsg tl block"><span class="theirdate date block">a user joined the room<a class="delete-msg red fr">X</a></span> </li>
-        //   $('#messages').prepend($('<li>').addClass('msgsent theirmsg tl block').append('<span class="theirdate date block">a user joined the room<a class="delete-msg red fr">X</a></span> </li>'));
-        // });
         comm.on('local', function(peer) {
           localVideo.src = peer.stream;
         });
