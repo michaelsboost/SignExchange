@@ -147,6 +147,38 @@
         font-family: "Lato", sans-serif;
       }
 
+      /*Username Dialog*/
+      .username-dialog {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: table;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        text-align: center;
+        overflow: hidden;
+        z-index: 3;
+        background: #4CA8E0;
+        background: rgba(92, 167, 222, 0.68);
+        /*background: rgba(0, 159, 255, 0.58);*/
+      }
+      .username-dialog nav {
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .username {
+        font-size: 18px;
+        resize: none;
+      }
+      .setname {
+        font-weight: 100;
+        padding: 5px 19px;
+        position: relative;
+        top: 1px;
+        background: #0072D0;
+      }
+
       /* Misc */
       .fl {
         float: left;
@@ -177,7 +209,7 @@
         padding: 3px 6px;
         border-radius: 1em;
         font-size: 15px;
-        z-index: 999;
+        z-index: 2;
       }
       .delete-cam {
         position: relative;
@@ -229,6 +261,15 @@
     </style>
   </head>
   <body>
+    <header class="username-dialog">
+      <nav>
+        <h1>
+        	<input type="text" class="username" placeholder="Your display name..." />
+          <a class="button setname pointer">Confirm</a>
+        </h1>
+      </nav>
+    </header>
+
     <div class="cams fl">
       <span class="yourcam">
         <video id="localVideo" muted autoplay></video>
@@ -245,50 +286,26 @@
       <input type="submit" name="submit" class="button green send pointer" value="Post">
     </form>
 
-    <ul class="conversation" id="messages">
-      <!-- <li class="msgsent mymsg tl block">
-        How you say, "How are you?"
-        <span class="mydate date block">Today at 7:30 PM
-          <a class="delete red fr">
-            X
-          </a>
-        </span>
-      </li>
-      <li class="msgsent theirmsg tr block">
-        How you say, "My name is?"
-        <span class="theirdate date block">Today at 7:36 PM
-          <a class="delete red fr">
-            X
-          </a>
-        </span>
-      </li> -->
-      <!-- <li class="msgsent theirmsg tl block">
-        How you say, "My name is?"
-        <span class="theirdate date block">Today at 7:36 PM
-          <a class="delete-msg red fr">
-            X
-          </a>
-        </span>
-      </li> -->
-    </ul>
+    <ul class="conversation" id="messages"></ul>
 
     <script>
       var socket = io();
-      $(window).keypress(function(e) {
-        if (e.keyCode === 13) {
+      var counter = 0;
+      $('#m').keypress(function(e) {
+        if (e.which === 13) {
           if ($('#m').val() === '') {
             $('#m').val('');
             console.log('no text');
           } else {
-            socket.emit('chat message', $('#m').val());
+            socket.emit('chat message',  $(".username").val() + ': ' + $('#m').val());
             $('#m').val('');
             console.log('Message sent');
           }
           return false;
         }
       });
-      $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
+      $('#chatForm').submit(function() {
+        socket.emit('chat message',  $(".username").val() + ': ' + $('#m').val());
         $('#m').val('');
         return false;
       });
@@ -300,7 +317,8 @@
         comm.on('connected', function(peer) {
           $(".theircam").prepend(peer.getVideo());
           $("#" + peer.ID).addClass("deleteCam " + peer.ID);
-          
+          $('#messages').prepend($('<li>').addClass('msgsent theirmsg tl block').append('<span class="theirdate date block">a user joined the room<a class="delete-msg red fr">X</a></span> </li>'));
+
           $(".deleteCam").on("click", function(e) {
             // $("#" + e.target.id).remove();
             var x;
@@ -311,13 +329,17 @@
             return false;
           });
         });
-
+        // comm.on('global_connect', function(peer) {
+        //   // <li class="msgsent theirmsg tl block"><span class="theirdate date block">a user joined the room<a class="delete-msg red fr">X</a></span> </li>
+        //   $('#messages').prepend($('<li>').addClass('msgsent theirmsg tl block').append('<span class="theirdate date block">a user joined the room<a class="delete-msg red fr">X</a></span> </li>'));
+        // });
         comm.on('local', function(peer) {
           localVideo.src = peer.stream;
         });
 
         comm.on('disconnect', function(peer) {
           $("#" + peer.ID + ", ." + peer.ID).remove();
+          $('#messages').prepend($('<li>').addClass('msgsent theirmsg tl block').append('<span class="theirdate date block">a user left the room<a class="delete-msg red fr">X</a></span> </li>'));
         });
       };
       connectIcecomm();
@@ -333,7 +355,7 @@
         // $('#messages').prepend($('<li>').text(msg));
         // $('#messages').prepend($('<li>').addClass('msgsent mymsg tl block').html(msg +'<span class="mydate date block">'+ month + '/' + date + '/' + year + ' ' + now.toLocaleTimeString() +'</span> </li>'));
         // $('#messages').prepend($('<li>').addClass('msgsent theirmsg tr block').html(msg +'<span class="theirdate date block">'+ month + '/' + date + '/' + year + ' ' + now.toLocaleTimeString() +'</span> </li>'));
-        $('#messages').prepend($('<li>').addClass('msgsent theirmsg tl block').html(msg +'<span class="theirdate date block">'+ month + '/' + date + '/' + year + ' ' + now.toLocaleTimeString() +'<a class="delete-msg red fr">X</a></span> </li>'));
+        $('#messages').prepend($('<li>').addClass('msgsent theirmsg tl block').text(msg).append('<span class="theirdate date block">'+ month + '/' + date + '/' + year + ' ' + now.toLocaleTimeString() +'<a class="delete-msg red fr">X</a></span> </li>'));
 
         // <li class="msgsent mymsg tl block"> How you say, "How are you?" <span class="mydate date block">Today at 7:30 PM</span> </li>
         // <li class="msgsent theirmsg tr block"> How you say, "My name is?" <span class="theirdate date block">Today at 7:36 PM</span> </li>
@@ -351,6 +373,20 @@
         });
         return false;
       };
+
+      $(".setname").click(function() {
+        if ( $(".username").val() === "" ) {
+          alert("You must set a username!");
+        } else {
+          $(".username-dialog").fadeOut();
+        }
+      });
+
+      $(".username").keypress(function(e) {
+        if ( e.which == 13 ) {
+          $(".setname").click();
+        }
+      });
     </script>
   </body>
 </html>
