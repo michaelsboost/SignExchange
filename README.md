@@ -9,7 +9,7 @@ SignExchange is an interactive chat application made and designed to help anyone
 MIT
 
 ### Availability
-Once released SignExchange will be available on the following platforms Chrome/Web/Android
+SignExchange will first be available for Android users, and other mobile devices.
 
 ### Tech
 Here's a list of open source projects SignExchange uses to work properly:
