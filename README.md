@@ -8,9 +8,6 @@ SignExchange is an interactive chat application made and designed to help anyone
 ### License
 MIT
 
-### Availability
-SignExchange will first be available for Android users, and other mobile devices.
-
 ### Tech
 Here's a list of open source projects SignExchange uses to work properly:
 
