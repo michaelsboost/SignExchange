@@ -1,0 +1,11 @@
+{
+  "name": "lingWest",
+  "version": "0.0.1",
+  "description": "lingWest test server",
+  "main": "server.js",
+  "scripts": {
+    "start"  : "node server.js"
+  },
+  "author": "michael schwartz",
+  "license": "MIT"
+}

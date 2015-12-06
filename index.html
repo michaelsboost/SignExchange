@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SignExchange</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.base.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.android.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.arctic.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.black.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.blackberry.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.bootstrap.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.classic.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.darkblue.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.energyblue.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.fresh.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.highcontrast.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.metro.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.metrodark.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.mobile.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.office.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.orange.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.shinyblack.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.summer.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.ui-darkness.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.ui-le-frog.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.ui-lightness.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.ui-overcast.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.ui-redmond.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.ui-smoothness.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.ui-start.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.ui-sunny.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.web.css">
+    <link rel="stylesheet" href="libraries/jqwidgets/styles/jqx.windowsphone.css">
+    <link rel="stylesheet" href="libraries/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="libraries/font-awesome/macset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="libraries/jquery/jquery.js"></script>
+    <script src="libraries/jqwidgets/jqxcore.js"></script>
+    <script src="libraries/jqwidgets/jqxsplitter.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="dropwrapper">
+        <select id="videoSource"></select>
+        <select id="youare">
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+        </select>
+
+        <select class="chosen-lang">
+          <option value="american-sign-language">American Sign Language</option>
+          <option value="argentine-sign-language">Argentine Sign Language</option>
+          <option value="bolivian-sign-language">Bolivian Sign Language</option>
+          <option value="brazilian-sign-language">Brazilian Sign Language</option>
+          <option value="bribri-sign-language">Bribri Sign Language</option>
+          <option value="brunca-sign-language">Brunca Sign Language</option>
+          <option value="chatino-sign-language">Chatino Sign Language</option>
+          <option value="chilean-sign-language">Chilean Sign Language</option>
+          <option value="colombian-sign-language">Colombian Sign Language</option>
+          <option value="costa-rican-sign-language">Costa Rican Sign Language</option>
+          <option value="old-costa-rican-sign-language">Old Costa Rican Sign Language</option>
+          <option value="cuban-sign-language">Cuban Sign Language</option>
+          <option value="dominican-sign-language">Dominican Sign Language</option>
+          <option value="ecuadorian-sign-language">Ecuadorian Sign Language</option>
+          <option value="greenlandic-sign-language">Greenlandic Sign Language</option>
+          <option value="guatemalan-sign-language">Guatemalan Sign Language</option>
+          <option value="guyanese-sign-language">Guyanese Sign Language</option>
+          <option value="honduras-sign-language">Honduras Sign Language</option>
+          <option value="inuit-sign-language">Inuit Sign Language</option>
+          <option value="jamaican-sign-language">Jamaican Sign Language</option>
+          <option value="jamaican-country-sign-language">Jamaican Country Sign Language</option>
+          <option value="kajana-sign-language">Kajana Sign Language</option>
+          <option value="keresan-sign-language">Keresan Sign Language</option>
+          <option value="maritime-sign-language">Maritime Sign Language</option>
+          <option value="mayan-sign-language">Mayan Sign Language</option>
+          <option value="mexican-sign-language">Mexican Sign Language</option>
+          <option value="navajo-sign-language">Navajo Sign Language</option>
+          <option value="nicaraguan-sign-language">Nicaraguan Sign Language</option>
+          <option value="old-cayman-sign-language">Old Cayman Sign Language</option>
+          <option value="quebec-sign-language">Quebec Sign Language</option>
+          <option value="panamanian-sign-language">Panamanian Sign Language</option>
+          <option value="paraguayan-sign-language">Paraguayan Sign Language</option>
+          <option value="peruvian-sign-language">Peruvian Sign Language</option>
+          <option value="puerto-rican-sign-language">Puerto Rican Sign Language</option>
+          <option value="providence-island-sign-language">Providence Island Sign Language</option>
+          <option value="salvadoran-sign-language">Salvadoran Sign Language</option>
+          <option value="trinidad-and-tobago-sign-language">Trinidad and Tobago Sign Language</option>
+          <option value="uruguayan-sign-language">Uruguayan Sign Language</option>
+          <option value="urubu-sign-language">Urubú Sign Language</option>
+          <option value="venezuelan-sign-language">Venezuelan Sign Language</option>
+
+          <option value="albanian-sign-language">Albanian Sign Language</option>
+          <option value="armenian-sign-language">Armenian Sign Language</option>
+          <option value="austrian-sign-language">Austrian Sign Language</option>
+          <option value="british-sign-language">British Sign Language</option>
+          <option value="bulgarian-sign-language">Bulgarian Sign Language</option>
+          <option value="catalan-sign-language">Catalan Sign Language</option>
+          <option value="croatian-sign-language">Croatian Sign Language</option>
+          <option value="czech-sign-language">Czech Sign Language</option>
+          <option value="cyprus-sign-language">Cyprus Sign Language</option>
+          <option value="danish-sign-language">Danish Sign Language</option>
+          <option value="dutch-sign-language">Dutch Sign Language</option>
+          <option value="estonian-sign-language">Estonian Sign Language</option>
+          <option value="finnish-sign-language">Finnish Sign Language</option>
+          <option value="finland-swedish-sign-language">Finland-Swedish Sign Language</option>
+          <option value="flemish-sign-language">Flemish Sign Language</option>
+          <option value="georgian-sign-language">Georgian Sign Language</option>
+          <option value="german-sign-language">German Sign Language</option>
+          <option value="greek-sign-language">Greek Sign Language</option>
+          <option value="hungarian-sign-language">Hungarian Sign Language</option>
+          <option value="icelandic-sign-language">Icelandic Sign Language</option>
+          <option value="irish-sign-language">Irish Sign Language</option>
+          <option value="italian-sign-language">Italian Sign Language</option>
+          <option value="kosovar-sign-language">Kosovar Sign Language</option>
+          <option value="latvian-sign-language">Latvian Sign Language</option>
+          <option value="lithuanian-sign-language">Lithuanian Sign Language</option>
+          <option value="macedonian-sign-language">Macedonian Sign Language</option>
+          <option value="maltese-sign-language">Maltese Sign Language</option>
+          <option value="northern-ireland-sign-language">Northern Ireland Sign Language</option>
+          <option value="norwegian-sign-language">Norwegian Sign Language</option>
+          <option value="polish-sign-language">Polish Sign Language</option>
+          <option value="portuguese-sign-language">Portuguese Sign Language</option>
+          <option value="romanian-sign-language">Romanian Sign Language</option>
+          <option value="russian-sign-language">Russian Sign Language</option>
+          <option value="slovakian-sign-language">Slovakian Sign Language</option>
+          <option value="slovenian-sign-language">Slovenian Sign Language</option>
+          <option value="spanish-sign-language">Spanish Sign Language</option>
+          <option value="swedish-sign-language">Swedish Sign Language</option>
+          <option value="swiss-french-sign-language">Swiss-French Sign Language</option>
+          <option value="swiss-german-sign-language">Swiss-German Sign Language</option>
+          <option value="swiss-italian-sign-language">Swiss-Italian Sign Language</option>
+          <option value="ukrainian-sign-language">Ukrainian Sign Language</option>
+          <option value="valencian-sign-language">Valencian Sign Language</option>
+          <option value="walloon-sign-language">Walloon Sign Language</option>
+          <option value="yugoslav-sign-language">Yugoslav Sign Language</option>
+
+          <option value="afghan-sign-language">Afghan Sign Language</option>
+          <option value="alipur-sign-language">Alipur Sign Language</option>
+          <option value="amami-oshima-sign-language">Amami Oshima Sign Language</option>
+          <option value="auslan">Auslan (Australian Sign Language)</option>
+          <option value="ban-khor-sign-language">Ban Khor Sign Language</option>
+          <option value="bhutanese-sign-language">Bhutanese Sign Language</option>
+          <option value="burmese-sign-language">Burmese sign language</option>
+          <option value="cambodian-sign-language">Cambodian Sign Language</option>
+          <option value="chinese-sign-language">Chinese Sign Language</option>
+          <option value="enga-sign-language">Enga Sign Language</option>
+          <option value="ghandruk-sign-language">Ghandruk Sign Language</option>
+          <option value="hawaii-sign-language">Hawaiʻi Sign Language</option>
+          <option value="hong-kong-sign-language">Hong Kong Sign Language</option>
+          <option value="huay-hai-sign-language">Huay Hai Sign Language</option>
+          <option value="indo-pakistani-sign-language">Indo-Pakistani Sign Language</option>
+          <option value="jakarta-sign-language">Jakarta Sign Language</option>
+          <option value="japanese-sign-language">Japanese Sign Language</option>
+          <option value="jhankot-sign-language">Jhankot Sign Language</option>
+          <option value="jumla-sign-language">Jumla Sign Language</option>
+          <option value="kata-kolok">Kata Kolok (aka Bali Sign Language, Benkala Sign Language)</option>
+          <option value="laotian-sign-language">Laotian Sign Language</option>
+          <option value="korean-sign-language">Korean Sign Language</option>
+          <option value="macau-sign-language">Macau Sign Language</option>
+          <option value="malaysian-sign-language">Malaysian Sign Language</option>
+          <option value="mongolian-sign-language">Mongolian Sign Language</option>
+          <option value="na-sai-sign-language">Na Sai Sign Language</option>
+          <option value="naga-sign-language">Naga Sign Language</option>
+          <option value="nepali-sign-language">Nepali Sign Language</option>
+          <option value="new-zealand-sign-language">New Zealand Sign Language</option>
+          <option value="old-bangkok-sign-language">Old Bangkok Sign Language</option>
+          <option value="old-chiangmai-sign-language">Old Chiangmai Sign Language</option>
+          <option value="papua-new-guinean-sign-language">Papua New Guinean Sign Language</option>
+          <option value="penang-sign-language">Penang Sign Language</option>
+          <option value="philippine-sign-language">Philippine Sign Language</option>
+          <option value="rennellese-sign-language">Rennellese Sign Language</option>
+          <option value="samoan-sign-language">Samoan Sign Language</option>
+          <option value="selangor-sign-language">Selangor Sign Language</option>
+          <option value="singapore-sign-language">Singapore Sign Language</option>
+          <option value="sri-lankan-sign-languages">Sri Lankan Sign Languages</option>
+          <option value="taiwanese-sign-language">Taiwanese Sign Language	Japanese</option>
+          <option value="tibetan-sign-language">Tibetan Sign Language</option>
+          <option value="thai-sign-language">Thai Sign Language</option>
+          <option value="hanoi-sign-language">Hanoi Sign Language (Vietnamese)</option>
+          <option value="ho-chi-minh-sign-language">Ho Chi Minh Sign Language (Vietnamese)</option>
+          <option value="haiphong-sign-language">Haiphong Sign Language (Vietnamese)</option>
+          <option value="yogyakarta-sign-language">Yogyakarta Sign Language</option>
+          <option value="yolŋu-sign-language">Yolŋu Sign Language</option>
+
+          <option value="al-sayyid-bedouin-sign-language">Al-Sayyid Bedouin Sign Language</option>
+          <option value="egyptian-sign-language">Egyptian Sign Language</option>
+          <option value="emirati-sign-language">Emirati Sign Language</option>
+          <option value="ghardaia-sign-language">Ghardaia Sign Language</option>
+          <option value="iraqi-sign-language">Iraqi Sign Language</option>
+          <option value="israeli-sign-language">Israeli Sign Language</option>
+          <option value="jordanian-sign-language">Jordanian Sign Language</option>
+          <option value="kuwaiti-sign-language">Kuwaiti Sign Language</option>
+          <option value="lebanese-sign-language">Lebanese Sign Language</option>
+          <option value="mardin-sign-language">Mardin Sign Language</option>
+          <option value="omani-sign-language">Omani Sign Language</option>
+          <option value="palestinian-sign-language">Palestinian Sign Language</option>
+          <option value="persian-sign-language">Persian Sign Language</option>
+          <option value="qatari-unified-sign-language">Qatari Unified Sign Language</option>
+          <option value="saudi-sign-language">Saudi Sign Language</option>
+          <option value="seraglio-sign-language">Seraglio Sign Language</option>
+          <option value="syrian-sign-language">Syrian Sign Language</option>
+          <option value="turkish-sign-language">Turkish Sign Language</option>
+          <option value="yemeni-sign-language">Yemeni Sign Language</option>
+
+          <option value="adamorobe-sign-language">Adamorobe Sign Language</option>
+          <option value="algerian-sign-language">Algerian Sign Language</option>
+          <option value="bamako-sign-language">Bamako Sign Language</option>
+          <option value="bura-sign-language">Bura Sign Language</option>
+          <option value="burkina-sign-language">Burkina Sign Language</option>
+          <option value="chadian-sign-language">Chadian Sign Language</option>
+          <option value="dogon-sign-language">Dogon Sign Language</option>
+          <option value="eritrean-sign-language">Eritrean Sign Language</option>
+          <option value="ethiopian-sign-languages">Ethiopian Sign Languages</option>
+          <option value="francophone-african-sign-language">Francophone African Sign Language</option>
+          <option value="gambian-sign-language">Gambian Sign Language</option>
+          <option value="ghanaian-sign-language">Ghanaian Sign Language</option>
+          <option value="guinean-sign-language">Guinean Sign Language</option>
+          <option value="guinea-bissau-sign-language">Guinea-Bissau Sign Language</option>
+          <option value="hausa-sign-language">Hausa Sign Language</option>
+          <option value="kenyan-sign-language">Kenyan Sign Language</option>
+          <option value="libyan-sign-language">Libyan Sign Language</option>
+          <option value="malagasy-sign-language">Malagasy Sign Language</option>
+          <option value="mauritian-sign-language">Mauritian Sign Language</option>
+          <option value="mofu-gudur-sign-language">Mofu-Gudur Sign Language</option>
+          <option value="moroccan-sign-language">Moroccan Sign Language</option>
+          <option value="mozambican-sign-language">Mozambican Sign Language</option>
+          <option value="mbour-sign-language">Mbour Sign Language</option>
+          <option value="namibian-sign-language">Namibian Sign Language</option>
+          <option value="nanabin-sign-language">Nanabin Sign Language</option>
+          <option value="nigerian-sign-language">Nigerian Sign Language</option>
+          <option value="rwandan-sign-language">Rwandan Sign Language</option>
+          <option value="sierra-leonean-sign-language">Sierra Leonean Sign Language</option>
+          <option value="somali-sign-language">Somali Sign Language</option>
+          <option value="south-african-sign-language">South African Sign Language</option>
+          <option value="sudanese-sign-languages">Sudanese Sign Languages</option>
+          <option value="tanzanian-sign-languages">Tanzanian Sign Languages</option>
+          <option value="tebul-sign-language">Tebul Sign Language</option>
+          <option value="tunisian-sign-language">Tunisian Sign Language</option>
+          <option value="ugandan-sign-language">Ugandan Sign Language</option>
+          <option value="yoruba-sign-language">Yoruba Sign Language</option>
+          <option value="zambian-sign-language">Zambian Sign Language</option>
+          <option value="zimbabwean-sign-languages">Zimbabwean Sign Languages</option>
+        </select>
+      </div>
+
+      <a class="button red report fr lhfix">Report</a>
+      <a class="button green search fr lhfix">Search</a>
+    </div>
+
+    <div id="splitContainer">
+      <div>
+        <div id="leftSplitter">
+          <div class="yourcam">
+            <video id="yourcam" muted autoplay></video>
+          </div>
+          <div class="theircam">
+            <video id="theircam" muted autoplay></video>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div id="rightSplitter">
+          <div>
+            <div class="conversation">
+              <p class="msgsent mymsg tl block">
+                How you say, "How are you?"
+                <span class="mydate date block">Today at 7:30 PM</span>
+              </p>
+              <p class="msgsent theirmsg tr block">
+                How you say, "My name is?"
+                <span class="theirdate date block">Today at 7:36 PM</span>
+              </p>
+            </div>
+            <!-- <div class="msgcontainer">
+              <textarea class="message" placeholder="Type what you want to say here..."></textarea>
+            </div> -->
+            <form action="#" onSubmit="return false;" id="chatForm">
+              <input type="hidden" id="name" value="<?php echo $usr; ?>">
+              <input type="text" class="message" name="text" id="text" placeholder="Type what you want to say here...">
+              <input type="submit" name="submit" class="button green send pointer" value="Post">
+            </form>
+            <!-- <a class="button green send">Send</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
