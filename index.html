@@ -48,12 +48,13 @@
         left: 0;
         bottom: 0;
         width: 250px;
-        overflow: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
       }
       video, img {
         display: block;
         width: 100%;
-        float: none;
+        height: auto;
       }
 
       /* Textbox/Button Styles */
@@ -195,11 +196,13 @@
           width: 100%;
           background: #fff;
           z-index: 1;
+          overflow-x: auto;
+          overflow-y: hidden;
         }
         video, img {
-          width: 200px;
+          height: 150px;
           display: inline-block;
-          float: left;
+          width: auto;
         }
 
         /* Conversation Area */
@@ -214,7 +217,7 @@
           right: 96px;
         }
         .delete-cam {
-          top: 8px;
+          top: -128px;
           right: 26px;
           float: none;
         }
@@ -225,13 +228,13 @@
     </style>
   </head>
   <body>
-    <div class="cams">
-      <div class="yourcam">
+    <div class="cams fl">
+      <span class="yourcam">
         <video id="localVideo" muted autoplay></video>
-      </div>
-      <div class="theircam">
+      </span>
+      <span class="theircam">
 
-      </div>
+      </span>
     </div>
 
     <form action="#" onSubmit="return false;" id="chatForm">
@@ -295,8 +298,17 @@
 
         comm.on('connected', function(peer) {
           $(".theircam").prepend(peer.getVideo());
-          $(".theircam").prepend('<a class="delete-cam red '+ peer.ID +'">X</a>');
-          deleteCam();
+          $("#" + peer.ID).addClass("deleteCam " + peer.ID);
+          
+          $(".deleteCam").on("click", function(e) {
+            // $("#" + e.target.id).remove();
+            var x;
+            if (confirm("Are you sure you wish to delete this webcam? There's no going back!") == true) {
+              $("#" + e.target.id).remove();
+            }
+            document.getElementById("demo").innerHTML = x;
+            return false;
+          });
         });
 
         comm.on('local', function(peer) {
@@ -304,8 +316,7 @@
         });
 
         comm.on('disconnect', function(peer) {
-          document.getElementById(peer.ID).remove();
-          document.querySelector("." + peer.ID).remove();
+          $("#" + peer.ID + ", ." + peer.ID).remove();
         });
       };
       connectIcecomm();
@@ -339,16 +350,6 @@
         });
         return false;
       };
-      var deleteCam = function() {
-        $(".delete-cam").on("click", function() {
-          $(this).next().remove();
-          $(this).remove();
-          return false;
-        });
-        return false;
-      };
-      deleteCam();
-      deleteMessage();
     </script>
   </body>
 </html>
