@@ -6,7 +6,7 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <!-- <script src="libraries/jquery/jquery-1.11.1.js"></script> -->
     <script src="https://cdn.icecomm.io/icecomm.js"></script>
     <style>
@@ -295,7 +295,7 @@
 
         comm.on('connected', function(peer) {
           $(".theircam").prepend(peer.getVideo());
-          $(".theircam").prepend('<a class="delete-cam red" id="'+ peer.ID +'">X</a>');
+          $(".theircam").prepend('<a class="delete-cam red '+ peer.ID +'">X</a>');
           deleteCam();
         });
 
@@ -305,6 +305,7 @@
 
         comm.on('disconnect', function(peer) {
           document.getElementById(peer.ID).remove();
+          document.querySelector("." + peer.ID).remove();
         });
       };
       connectIcecomm();
