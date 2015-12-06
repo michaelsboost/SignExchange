@@ -16,6 +16,7 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(8080, function(){
-  console.log('Server listening at http://localhost:8080');
+http.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
+  var addr = http.address();
+  console.log("Chat server listening at", addr.address + ":" + addr.port);
 });
