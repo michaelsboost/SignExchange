@@ -3,7 +3,7 @@ SignExchange
 
 ---------------
 
-SignExchange is an interactive peer 2 peer webcam chat application made and designed to help anyone learn sign language.
+SignExchange is an interactive chat application made and designed to help anyone learn sign language.
 
 ### License
 MIT
