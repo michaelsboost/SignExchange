@@ -1,25 +1,21 @@
-//
-// # SimpleServer
-//
-// A simple chat server using Socket.IO, Express, and Async.
-//
-var http = require("http");
-var path = require("path");
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-var express = require("express");
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
 
-//
-// ## SimpleServer `SimpleServer(obj)`
-//
-// Creates a new instance of SimpleServer with the following options:
-//  * `port` - The HTTP port to listen on. If `process.env.PORT` is set, _it overrides this value_.
-//
-var router = express();
-var server = http.createServer(router);
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+  socket.on('chat message', function(message) {
+    io.emit('new chat message', message);
+  });
+});
 
-router.use(express.static(path.resolve(__dirname)));
-
-server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
-  var addr = server.address();
-  console.log("Chat server listening at", addr.address + ":" + addr.port);
+http.listen(8080, function(){
+  console.log('Server listening at http://localhost:8080');
 });
