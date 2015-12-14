@@ -376,10 +376,15 @@
         return false;
       };
 
+      if ( localStorage.getItem('UserName')) {
+        $(".username").val(localStorage.getItem('UserName'));
+      }
+
       $(".setname").click(function() {
         if ( $(".username").val() === "" ) {
           alert("You must set a username!");
         } else {
+          localStorage.setItem('UserName', $(".username").val());
           $(".username-dialog").fadeOut();
         }
       });
@@ -387,8 +392,13 @@
       $(".username").keypress(function(e) {
         if ( e.which == 13 ) {
           $(".setname").click();
+          localStorage.setItem('UserName', this.value);
         }
       });
+
+      if ( $(".username").val() !== "" ) {
+        $(".username-dialog").fadeOut();
+      }
     </script>
   </body>
 </html>
