@@ -12,18 +12,6 @@
     <!-- <script src="libraries/jquery/jquery-1.11.1.js"></script> -->
     <script src="https://cdn.icecomm.io/icecomm.js"></script>
     <style>
-      @import url("libraries/font-awesome/font-awesome.css");
-      @import url("libraries/font-awesome/macset.css");
-
-      @font-face {
-        font-family: Fira;
-        src: url('libraries/font-awesome/FiraSans-Light.ttf');
-      }
-      @font-face {
-        font-family: Lato;
-        src: url('libraries/font-awesome/Lato-Light.ttf');
-      }
-
       html, body {
         height: 100%;
         padding: 0;
@@ -213,7 +201,7 @@
       }
 
       .delete-cam, .delete-msg {
-        padding: 3px 6px;
+        padding: 2px 7px;
         border-radius: 1em;
         font-size: 15px;
         z-index: 2;
@@ -226,6 +214,9 @@
       }
       .delete-msg {
         margin-top: -7px;
+      }
+      .delete-msg > svg {
+        margin-top: 4px;
       }
 
       @media all and (max-width:800px) {
@@ -268,6 +259,12 @@
     </style>
   </head>
   <body>
+    <audio id="sound">
+      <!-- <source src="http://www.soundjay.com/button/beep-07.wav" type="audio/mpeg"> -->
+      <source src="https://signexchange.herokuapp.com/tone.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
     <header class="username-dialog">
       <nav>
         <h1>
@@ -324,7 +321,8 @@
         comm.on('connected', function(peer) {
           $(".theircam").prepend(peer.getVideo());
           $("#" + peer.ID).addClass("deleteCam " + peer.ID);
-          $('#messages').prepend($('<li>').addClass('userconnect theirmsg tl block').append('<span class="theirdate date block">a user joined the room<a class="delete-msg red fr">X</a></span> </li>'));
+          $('#messages').prepend($('<li>').addClass('userconnect theirmsg tl block').append('<span class="theirdate date block">a user joined the room<a class="delete-msg red fr"><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg2" viewBox="0 0 221 242" height="15px"> <metadata id="metadata9"> <rdf:RDF> <cc:Work rdf:about=""> <dc:format>image/svg+xml</dc:format> <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/> <dc:title></dc:title> </cc:Work> </rdf:RDF> </metadata> <defs id="defs7"/> <path style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1" d="M 2.74,59.18 C 0.24,56.77 0.24,45.23 2.74,42.82 4.66,40.98 8.5,41.03 11,41 c 0,0 34,0 34,0 2.37,0 5.72,0.2 7.79,-1.02 2.67,-1.59 3.89,-5.24 5.01,-7.98 0,0 7.61,-18 7.61,-18 C 71.25,3.5 80.88,1.02 92,1 c 0,0 37,0 37,0 5.91,0.01 11.72,0.35 17,3.36 9.08,5.19 11.79,14.62 15.58,23.64 1.3,3.12 3.31,9.37 5.81,11.4 2.18,1.78 4.96,1.58 7.61,1.6 0,0 33,0 33,0 2.66,0 7.33,-0.2 9.57,1.29 3.32,2.21 3.45,14.23 0.69,16.89 C 215.52,61.82 204.02,61 200,61 c 0,0 0,147 0,147 -0.02,11.97 -4.29,25.18 -16,30.59 -4.49,2.07 -11.09,2.4 -16,2.41 0,0 -115,0 -115,0 -4.65,-0.01 -11.74,-0.42 -16,-2.22 C 25.42,233.88 21.02,220.55 21,209 21,209 21,61 21,61 16.98,61 5.48,61.82 2.74,59.18 Z M 136.78,22.02 c -1.89,-1.13 -4.64,-1 -6.78,-1.02 0,0 -33,0 -33,0 -3.53,0 -10.85,-0.71 -13.51,1.6 -2.49,2.16 -7,14.67 -8.49,18.4 0,0 71,0 71,0 -1.68,-4.2 -5.75,-16.89 -9.22,-18.98 z M 40,61 c 0,0 0,123 0,123 0,0 0,23 0,23 0.05,4.01 0.66,10.57 4.39,12.98 1.93,1.24 5.36,1.02 7.61,1.02 0,0 97,0 97,0 0,0 22,0 22,0 2.29,-0.05 4.53,0.05 6.35,-1.6 3.57,-3.22 3.64,-9.99 3.65,-14.4 0,0 0,-144 0,-144 0,0 -141,0 -141,0 z m 38.83,32.48 c 1.41,2 1.17,6.12 1.17,8.52 0,0 0,78 0,78 -0.01,8.17 0.1,11.46 -11,10.96 -7.04,-0.32 -7.91,-2.37 -8,-8.96 0,0 0,-68 0,-68 0,-3.94 -0.71,-17.87 1.17,-20.52 0.98,-1.37 1.61,-1.3 2.94,-1.92 3.57,-0.66 11.3,-1.47 13.72,1.92 z m 40,0 c 1.41,2 1.17,6.12 1.17,8.52 0,0 0,78 0,78 -0.01,8.17 0.1,11.46 -11,10.96 -7.04,-0.32 -7.91,-2.37 -8,-8.96 0,0 0,-68 0,-68 0,-3.94 -0.71,-17.87 1.17,-20.52 0.98,-1.37 1.61,-1.3 2.94,-1.92 3.57,-0.66 11.3,-1.47 13.72,1.92 z m 40,0 c 1.41,2 1.17,6.12 1.17,8.52 0,0 0,78 0,78 -0.01,8.17 0.1,11.46 -11,10.96 -7.04,-0.32 -7.91,-2.37 -8,-8.96 0,0 0,-68 0,-68 0,-3.94 -0.71,-17.87 1.17,-20.52 0.98,-1.37 1.61,-1.3 2.94,-1.92 3.57,-0.66 11.3,-1.47 13.72,1.92 z" id="Selection"/></svg></a></span> </li>'));
+          deleteMessage();
 
           $(".deleteCam").on("click", function(e) {
             var x;
@@ -341,7 +339,8 @@
 
         comm.on('disconnect', function(peer) {
           $("#" + peer.ID + ", ." + peer.ID).remove();
-          $('#messages').prepend($('<li>').addClass('userconnect theirmsg tl block').append('<span class="theirdate date block">a user left the room<a class="delete-msg red fr">X</a></span> </li>'));
+          $('#messages').prepend($('<li>').addClass('userconnect theirmsg tl block').append('<span class="theirdate date block">a user left the room<a class="delete-msg red fr"><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg2" viewBox="0 0 221 242" height="15px"> <metadata id="metadata9"> <rdf:RDF> <cc:Work rdf:about=""> <dc:format>image/svg+xml</dc:format> <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/> <dc:title></dc:title> </cc:Work> </rdf:RDF> </metadata> <defs id="defs7"/> <path style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1" d="M 2.74,59.18 C 0.24,56.77 0.24,45.23 2.74,42.82 4.66,40.98 8.5,41.03 11,41 c 0,0 34,0 34,0 2.37,0 5.72,0.2 7.79,-1.02 2.67,-1.59 3.89,-5.24 5.01,-7.98 0,0 7.61,-18 7.61,-18 C 71.25,3.5 80.88,1.02 92,1 c 0,0 37,0 37,0 5.91,0.01 11.72,0.35 17,3.36 9.08,5.19 11.79,14.62 15.58,23.64 1.3,3.12 3.31,9.37 5.81,11.4 2.18,1.78 4.96,1.58 7.61,1.6 0,0 33,0 33,0 2.66,0 7.33,-0.2 9.57,1.29 3.32,2.21 3.45,14.23 0.69,16.89 C 215.52,61.82 204.02,61 200,61 c 0,0 0,147 0,147 -0.02,11.97 -4.29,25.18 -16,30.59 -4.49,2.07 -11.09,2.4 -16,2.41 0,0 -115,0 -115,0 -4.65,-0.01 -11.74,-0.42 -16,-2.22 C 25.42,233.88 21.02,220.55 21,209 21,209 21,61 21,61 16.98,61 5.48,61.82 2.74,59.18 Z M 136.78,22.02 c -1.89,-1.13 -4.64,-1 -6.78,-1.02 0,0 -33,0 -33,0 -3.53,0 -10.85,-0.71 -13.51,1.6 -2.49,2.16 -7,14.67 -8.49,18.4 0,0 71,0 71,0 -1.68,-4.2 -5.75,-16.89 -9.22,-18.98 z M 40,61 c 0,0 0,123 0,123 0,0 0,23 0,23 0.05,4.01 0.66,10.57 4.39,12.98 1.93,1.24 5.36,1.02 7.61,1.02 0,0 97,0 97,0 0,0 22,0 22,0 2.29,-0.05 4.53,0.05 6.35,-1.6 3.57,-3.22 3.64,-9.99 3.65,-14.4 0,0 0,-144 0,-144 0,0 -141,0 -141,0 z m 38.83,32.48 c 1.41,2 1.17,6.12 1.17,8.52 0,0 0,78 0,78 -0.01,8.17 0.1,11.46 -11,10.96 -7.04,-0.32 -7.91,-2.37 -8,-8.96 0,0 0,-68 0,-68 0,-3.94 -0.71,-17.87 1.17,-20.52 0.98,-1.37 1.61,-1.3 2.94,-1.92 3.57,-0.66 11.3,-1.47 13.72,1.92 z m 40,0 c 1.41,2 1.17,6.12 1.17,8.52 0,0 0,78 0,78 -0.01,8.17 0.1,11.46 -11,10.96 -7.04,-0.32 -7.91,-2.37 -8,-8.96 0,0 0,-68 0,-68 0,-3.94 -0.71,-17.87 1.17,-20.52 0.98,-1.37 1.61,-1.3 2.94,-1.92 3.57,-0.66 11.3,-1.47 13.72,1.92 z m 40,0 c 1.41,2 1.17,6.12 1.17,8.52 0,0 0,78 0,78 -0.01,8.17 0.1,11.46 -11,10.96 -7.04,-0.32 -7.91,-2.37 -8,-8.96 0,0 0,-68 0,-68 0,-3.94 -0.71,-17.87 1.17,-20.52 0.98,-1.37 1.61,-1.3 2.94,-1.92 3.57,-0.66 11.3,-1.47 13.72,1.92 z" id="Selection"/></svg></a></span> </li>'));
+          deleteMessage();
         });
       };
       connectIcecomm();
@@ -352,22 +351,6 @@
       var date = currentTime.getDate();
       var year = currentTime.getFullYear();
 
-      socket.on('new chat message', function(msg) {
-        var now = new Date();
-        // $('#messages').prepend($('<li>').text(msg));
-        // $('#messages').prepend($('<li>').addClass('msgsent mymsg tl block').html(msg +'<span class="mydate date block">'+ month + '/' + date + '/' + year + ' ' + now.toLocaleTimeString() +'</span> </li>'));
-        // $('#messages').prepend($('<li>').addClass('msgsent theirmsg tr block').html(msg +'<span class="theirdate date block">'+ month + '/' + date + '/' + year + ' ' + now.toLocaleTimeString() +'</span> </li>'));
-        $('#messages').prepend($('<li>').addClass('msgsent theirmsg tl block').text(msg).append('<span class="theirdate date block">'+ month + '/' + date + '/' + year + ' ' + now.toLocaleTimeString() +'<a class="delete-msg red fr">X</a></span> </li>'));
-
-        // <li class="msgsent mymsg tl block"> How you say, "How are you?" <span class="mydate date block">Today at 7:30 PM</span> </li>
-        // <li class="msgsent theirmsg tr block"> How you say, "My name is?" <span class="theirdate date block">Today at 7:36 PM</span> </li>
-        deleteMessage();
-      });
-      socket.on('ready', function(msg) {
-        console.log('this is the room name', msg);
-        connectIcecomm(msg);
-      });
-
       var deleteMessage = function() {
         $(".delete-msg").on("click", function() {
           $(this).parent().parent().remove();
@@ -375,6 +358,23 @@
         });
         return false;
       };
+
+      socket.on('new chat message', function(msg) {
+        var now = new Date();
+        // $('#messages').prepend($('<li>').text(msg));
+        // $('#messages').prepend($('<li>').addClass('msgsent mymsg tl block').html(msg +'<span class="mydate date block">'+ month + '/' + date + '/' + year + ' ' + now.toLocaleTimeString() +'</span> </li>'));
+        // $('#messages').prepend($('<li>').addClass('msgsent theirmsg tr block').html(msg +'<span class="theirdate date block">'+ month + '/' + date + '/' + year + ' ' + now.toLocaleTimeString() +'</span> </li>'));
+        $('#messages').prepend($('<li>').addClass('msgsent theirmsg tl block').text(msg).append('<span class="theirdate date block">'+ month + '/' + date + '/' + year + ' ' + now.toLocaleTimeString() +'<a class="delete-msg red fr"><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg2" viewBox="0 0 221 242" height="15px"> <metadata id="metadata9"> <rdf:RDF> <cc:Work rdf:about=""> <dc:format>image/svg+xml</dc:format> <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/> <dc:title></dc:title> </cc:Work> </rdf:RDF> </metadata> <defs id="defs7"/> <path style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1" d="M 2.74,59.18 C 0.24,56.77 0.24,45.23 2.74,42.82 4.66,40.98 8.5,41.03 11,41 c 0,0 34,0 34,0 2.37,0 5.72,0.2 7.79,-1.02 2.67,-1.59 3.89,-5.24 5.01,-7.98 0,0 7.61,-18 7.61,-18 C 71.25,3.5 80.88,1.02 92,1 c 0,0 37,0 37,0 5.91,0.01 11.72,0.35 17,3.36 9.08,5.19 11.79,14.62 15.58,23.64 1.3,3.12 3.31,9.37 5.81,11.4 2.18,1.78 4.96,1.58 7.61,1.6 0,0 33,0 33,0 2.66,0 7.33,-0.2 9.57,1.29 3.32,2.21 3.45,14.23 0.69,16.89 C 215.52,61.82 204.02,61 200,61 c 0,0 0,147 0,147 -0.02,11.97 -4.29,25.18 -16,30.59 -4.49,2.07 -11.09,2.4 -16,2.41 0,0 -115,0 -115,0 -4.65,-0.01 -11.74,-0.42 -16,-2.22 C 25.42,233.88 21.02,220.55 21,209 21,209 21,61 21,61 16.98,61 5.48,61.82 2.74,59.18 Z M 136.78,22.02 c -1.89,-1.13 -4.64,-1 -6.78,-1.02 0,0 -33,0 -33,0 -3.53,0 -10.85,-0.71 -13.51,1.6 -2.49,2.16 -7,14.67 -8.49,18.4 0,0 71,0 71,0 -1.68,-4.2 -5.75,-16.89 -9.22,-18.98 z M 40,61 c 0,0 0,123 0,123 0,0 0,23 0,23 0.05,4.01 0.66,10.57 4.39,12.98 1.93,1.24 5.36,1.02 7.61,1.02 0,0 97,0 97,0 0,0 22,0 22,0 2.29,-0.05 4.53,0.05 6.35,-1.6 3.57,-3.22 3.64,-9.99 3.65,-14.4 0,0 0,-144 0,-144 0,0 -141,0 -141,0 z m 38.83,32.48 c 1.41,2 1.17,6.12 1.17,8.52 0,0 0,78 0,78 -0.01,8.17 0.1,11.46 -11,10.96 -7.04,-0.32 -7.91,-2.37 -8,-8.96 0,0 0,-68 0,-68 0,-3.94 -0.71,-17.87 1.17,-20.52 0.98,-1.37 1.61,-1.3 2.94,-1.92 3.57,-0.66 11.3,-1.47 13.72,1.92 z m 40,0 c 1.41,2 1.17,6.12 1.17,8.52 0,0 0,78 0,78 -0.01,8.17 0.1,11.46 -11,10.96 -7.04,-0.32 -7.91,-2.37 -8,-8.96 0,0 0,-68 0,-68 0,-3.94 -0.71,-17.87 1.17,-20.52 0.98,-1.37 1.61,-1.3 2.94,-1.92 3.57,-0.66 11.3,-1.47 13.72,1.92 z m 40,0 c 1.41,2 1.17,6.12 1.17,8.52 0,0 0,78 0,78 -0.01,8.17 0.1,11.46 -11,10.96 -7.04,-0.32 -7.91,-2.37 -8,-8.96 0,0 0,-68 0,-68 0,-3.94 -0.71,-17.87 1.17,-20.52 0.98,-1.37 1.61,-1.3 2.94,-1.92 3.57,-0.66 11.3,-1.47 13.72,1.92 z" id="Selection"/></svg></a></span> </li>'));
+
+        // <li class="msgsent mymsg tl block"> How you say, "How are you?" <span class="mydate date block">Today at 7:30 PM</span> </li>
+        // <li class="msgsent theirmsg tr block"> How you say, "My name is?" <span class="theirdate date block">Today at 7:36 PM</span> </li>
+        deleteMessage();
+        console.log( document.getElementById("sound").play() );
+      });
+      socket.on('ready', function(msg) {
+        console.log('this is the room name', msg);
+        connectIcecomm(msg);
+      });
 
       if ( localStorage.getItem('UserName')) {
         $(".username").val(localStorage.getItem('UserName'));
