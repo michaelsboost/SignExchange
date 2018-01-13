@@ -17,3 +17,5 @@ Here's a list of open source projects SignExchange uses to work properly:
 * [Node.js](https://nodejs.org/en/) - I/O server-side JavaScript based environment  
 
 ### SignExchange is no longer an active project!
+
+You can show your appreciation by [Donating via SquareCash](https://cash.me/$michaelsboost) and/or [PayPal](https://www.paypal.me/mikethedj4)
