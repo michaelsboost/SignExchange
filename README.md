@@ -19,3 +19,5 @@ Here's a list of open source projects SignExchange uses to work properly:
 ### SignExchange is no longer an active project!
 
 You can show your appreciation by [Donating via SquareCash](https://cash.me/$michaelsboost) and/or [PayPal](https://www.paypal.me/mikethedj4)
+
+[![ko-fi](https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0)](https://ko-fi.com/michaelsboost)
